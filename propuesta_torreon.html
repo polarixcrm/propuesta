@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operación Tsunami Inmobiliario™ — Torreón</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --green: #83E786;
+    --green-dim: #4fa852;
+    --white: #FAFAF8;
+    --gray-1: #111111;
+    --gray-2: #1C1C1C;
+    --gray-3: #2E2E2E;
+    --gray-4: #888888;
+    --gray-5: #CCCCCC;
+    --gray-light: #F4F4F0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 72px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(131,231,134,0.15);
+  }
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--gray-4);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 72px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(131,231,134,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left { padding-right: 60px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--green);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .hero-title .accent { color: var(--green); }
+  .hero-subtitle {
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+  .hero-meta {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 48px;
+  }
+  .hero-meta-row {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 16px;
+  }
+  .hero-meta-label {
+    font-family: 'DM Mono', monospace;
+    color: var(--gray-4);
+    letter-spacing: 0.1em;
+    min-width: 60px;
+  }
+  .hero-meta-value { color: var(--white); font-weight: 500; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .hero-cta:hover { background: #fff; transform: translateY(-2px); }
+  .hero-cta svg { transition: transform 0.2s; }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  .hero-right {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-badge {
+    background: var(--gray-2);
+    border: 1px solid rgba(131,231,134,0.2);
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-badge::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--green);
+  }
+  .badge-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .badge-value {
+    font-size: 18px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .scarcity-box {
+    background: var(--green);
+    color: var(--black);
+    padding: 20px 24px;
+  }
+  .scarcity-box .s-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .scarcity-box .s-main {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .scarcity-box .s-sub {
+    font-size: 15px;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 72px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-full {
+    max-width: 100%;
+    padding-left: 0; padding-right: 0;
+  }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--green);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-intro {
+    color: var(--gray-4);
+    font-size: 20px;
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--green) 0%, rgba(131,231,134,0.1) 60%, transparent 100%);
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 48px;
+  }
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, var(--green) 0%, rgba(131,231,134,0.1) 60%, transparent 100%);
+  }
+
+  /* ── DIAGNÓSTICO ── */
+  .diag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-3);
+  }
+  .diag-item {
+    background: var(--gray-1);
+    padding: 40px 52px;
+    position: relative;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .diag-item:hover { background: var(--gray-2); }
+  .diag-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(131,231,134,0.18);
+    position: absolute;
+    top: 12px; right: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .diag-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .diag-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .diag-text {
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.7;
+  }
+  .diag-highlight {
+    color: var(--green);
+    font-weight: 600;
+  }
+  .diag-separator {
+    grid-column: 1 / -1;
+    background: var(--gray-2);
+    padding: 16px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+
+  /* ── PROBLEMA / CONTRASTE ── */
+  .contrast-section {
+    background: var(--gray-1);
+    padding: 80px 72px;
+  }
+  .contrast-intro {
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+  .contrast-intro p {
+    color: var(--gray-5);
+    font-size: 20px;
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+  .contrast-intro .key-line {
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    border-left: 3px solid var(--green);
+    padding-left: 20px;
+    margin: 24px 0;
+  }
+
+  .contrast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 56px;
+  }
+  .contrast-table th {
+    padding: 20px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-3);
+  }
+  .contrast-table th:first-child { color: var(--gray-4); }
+  .contrast-table th:last-child { color: var(--green); }
+  .contrast-table td {
+    padding: 16px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+  .contrast-table tr:hover td { background: rgba(131,231,134,0.03); }
+  .contrast-table td:first-child { color: var(--gray-4); }
+  .contrast-table td:last-child { color: var(--white); }
+  .contrast-table td:last-child::before {
+    content: '→ ';
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .numbers-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-3);
+    margin-top: 0;
+  }
+  .numbers-cell {
+    background: var(--black);
+    padding: 32px 28px;
+  }
+  .numbers-cell .n-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .numbers-cell .n-label {
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.6;
+  }
+
+  /* ── FASES ── */
+  .phases-wrap { padding: 100px 72px; max-width: 1280px; margin: 0 auto; }
+  .phase-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+    background: var(--gray-3);
+  }
+  .phase-sidebar {
+    background: var(--gray-1);
+    padding: 40px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--gray-3);
+  }
+  .phase-num-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(131,231,134,0.18);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .phase-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .phase-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .phase-timing {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 5px 10px;
+    font-weight: 500;
+  }
+  .phase-content {
+    background: var(--gray-2);
+    padding: 40px 40px;
+  }
+  .phase-objetivo {
+    margin-bottom: 28px;
+  }
+  .phase-objetivo-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .phase-objetivo-text {
+    font-size: 20px;
+    color: var(--gray-5);
+    line-height: 1.8;
+  }
+  .phase-deliverables-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .phase-deliverables {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .phase-deliverables li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.6;
+  }
+  .phase-deliverables li::before {
+    content: '—';
+    color: var(--green);
+    flex-shrink: 0;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .phase-note {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: rgba(131,231,134,0.06);
+    border-left: 2px solid var(--green);
+    font-size: 16px;
+    color: var(--gray-4);
+    font-style: italic;
+  }
+
+  /* ── CRONOGRAMA ── */
+  .timeline-wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--gray-3);
+    margin-top: 2px;
+  }
+  .timeline-cell {
+    background: var(--black);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .tl-code {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .tl-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--gray-4);
+    margin-bottom: 6px;
+  }
+  .tl-label {
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .tl-mode {
+    font-size: 14px;
+    color: var(--gray-4);
+    margin-top: 4px;
+  }
+
+  /* ── BONOS ── */
+  .bonos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--gray-3);
+  }
+  .bono-card {
+    background: var(--gray-1);
+    padding: 40px 52px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .bono-card:hover { background: var(--gray-2); }
+  .bono-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .bono-card:hover::after { opacity: 1; }
+  .bono-icon {
+    margin-bottom: 20px;
+  }
+  .bono-icon svg {
+    display: block;
+  }
+  .bono-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+  .bono-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .bono-tagline {
+    font-size: 18px;
+    color: var(--green-dim);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .bono-text {
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.75;
+  }
+  .bono-brand {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--black);
+    background: var(--green);
+    padding: 4px 10px;
+  }
+
+  /* ── OPCIONES ── */
+  .opciones-section { background: var(--gray-1); padding: 100px 72px; }
+  .opciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--gray-3);
+    margin-top: 48px;
+  }
+  .opcion-card {
+    background: var(--gray-2);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .opcion-card.featured {
+    background: var(--black);
+    border-top: 2px solid var(--green);
+  }
+  .opcion-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .opcion-featured-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+  }
+  .opcion-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .opcion-card:not(.featured) .opcion-letter { color: rgba(255,255,255,0.15); }
+  .opcion-card.featured .opcion-letter { color: var(--green); }
+  .opcion-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .opcion-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .opcion-card.featured .opcion-price { color: var(--green); }
+  .opcion-price-note {
+    font-size: 16px;
+    color: var(--gray-4);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .opcion-desc {
+    font-size: 20px;
+    color: var(--gray-4);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+  .opcion-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .opcion-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 20px;
+    color: var(--gray-5);
+    line-height: 1.5;
+  }
+  .opcion-items li span.dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .opcion-risk {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    padding: 8px 12px;
+    border: 1px solid var(--gray-3);
+    display: inline-block;
+    color: var(--gray-4);
+    margin-top: auto;
+  }
+  .opcion-card.featured .opcion-risk {
+    border-color: rgba(131,231,134,0.3);
+    color: var(--green);
+  }
+
+  /* ── TABLA COMPARATIVA ── */
+  .tabla-wrap { padding: 80px 72px; max-width: 1280px; margin: 0 auto; }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .comp-table th {
+    padding: 16px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-3);
+    color: var(--gray-4);
+  }
+  .comp-table th.featured-col { color: var(--green); }
+  .comp-table th:first-child { text-align: left; color: var(--white); }
+  .comp-table td {
+    padding: 16px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    color: var(--gray-4);
+  }
+  .comp-table td:first-child {
+    text-align: left;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .comp-table td.featured-col { color: var(--white); background: rgba(131,231,134,0.04); }
+  .comp-table .price-row td { font-size: 20px; font-weight: 700; color: var(--white); padding: 20px 20px; }
+  .comp-table .price-row td.featured-col { color: var(--green); }
+  .check { color: var(--green); font-size: 20px; }
+  .dash { color: var(--gray-3); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--green);
+    padding: 80px 72px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cta-section p {
+    font-size: 20px;
+    color: rgba(10,10,10,0.7);
+    margin-bottom: 40px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--black);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+    padding: 18px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover { background: var(--gray-2); transform: translateY(-2px); }
+  .cta-note {
+    margin-top: 24px;
+    font-size: 15px;
+    color: rgba(10,10,10,0.55);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--gray-3);
+    padding: 32px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .f-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+  footer .f-note {
+    font-size: 14px;
+    color: var(--gray-4);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-right > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-right > *:nth-child(1) { animation-delay: 0.35s; }
+  .hero-right > *:nth-child(2) { animation-delay: 0.45s; }
+  .hero-right > *:nth-child(3) { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+    .hero-left { padding-right: 0; margin-bottom: 40px; }
+    section, .phases-wrap, .tabla-wrap, .opciones-section, .contrast-section { padding: 60px 24px; }
+    .diag-grid, .bonos-grid, .opciones-grid, .timeline-wrap { grid-template-columns: 1fr; }
+    .phase-block { grid-template-columns: 1fr; }
+    .phase-sidebar { border-right: none; border-bottom: 1px solid var(--gray-3); }
+    .numbers-bar { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Polarix CRM × Efecto Tsunami</div>
+  <ul class="nav-links">
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#bonos">Bonos</a></li>
+    <li><a href="#inversion">Inversión</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Propuesta Estratégica Exclusiva</div>
+    <h1 class="hero-title">
+      Operación<br>
+      <span class="accent">Tsunami</span><br>
+      Inmobiliario™
+    </h1>
+    <p class="hero-subtitle">
+      Ayudamos a constructoras como Torreón a convertir su inversión en pauta en un sistema predecible de leads calificados, contactabilidad inmediata y ventas consistentes — sin depender de una sola fuente de tráfico.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-row">
+        <span class="hero-meta-label">PARA</span>
+        <span class="hero-meta-value">Torreón Grupo Empresarial — Ibagué, Colombia</span>
+      </div>
+      <div class="hero-meta-row">
+        <span class="hero-meta-label">FECHA</span>
+        <span class="hero-meta-value">Mayo 20, 2026 — Válida 7 días</span>
+      </div>
+    </div>
+    <a href="#tres-formas" class="hero-cta">
+      Ver opciones de inversión
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-badge">
+      <div class="badge-label">Preparado por</div>
+      <div class="badge-value">Eduardo Ardila — CEO Polarix CRM & Efecto Tsunami™</div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-label">Modalidad</div>
+      <div class="badge-value">Presencial en Ibagué (Semana 1) + Virtual 90 días</div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-label">Operación ejecutada</div>
+      <div class="badge-value">Directamente por Eduardo Ardila — sin intermediarios</div>
+    </div>
+    <div class="scarcity-box">
+      <div class="s-label">⚠ Disponibilidad</div>
+      <div class="s-main">Máximo 3 empresas por trimestre</div>
+      <div class="s-sub">Junio: 2 cupos confirmados — queda 1 vacante</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico" style="padding-bottom: 0;">
+  <div class="section-eyebrow">Diagnóstico Estratégico</div>
+  <h2 class="section-title">Esto es lo que encontré</h2>
+  <p class="section-intro">
+    En nuestra sesión de diagnóstico identifiqué once puntos críticos que están limitando el crecimiento comercial de Torreón. Algunos ya los tenía el equipo en el radar — otros los detecté durante nuestra conversación.
+  </p>
+</section>
+
+<div class="diag-grid">
+  <div class="diag-separator">Lo que el equipo ya había identificado</div>
+
+  <div class="diag-item">
+    <div class="diag-num">01</div>
+    <div class="diag-tag">Calidad del lead</div>
+    <div class="diag-title">Alta tasa de leads no calificados</div>
+    <div class="diag-text">El <span class="diag-highlight">42% de los leads de abril</span> no estaban calificados (promedio histórico: 35%). Con ~$8M COP/mes en pauta, una parte significativa genera desgaste operativo sin retornar en ventas.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">02</div>
+    <div class="diag-tag">Velocidad</div>
+    <div class="diag-title">Baja velocidad de contactabilidad</div>
+    <div class="diag-text">El <span class="diag-highlight">72% de los leads</span> se contacta entre 1 y 4 días después del registro. Un lead sin respuesta en menos de 5 minutos ya está frío.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">03</div>
+    <div class="diag-tag">Seguimiento</div>
+    <div class="diag-title">12% de leads que nunca recibe contacto</div>
+    <div class="diag-text">Uno de cada ocho leads registrados nunca es contactado. Ese prospecto costó dinero, llegó con algún nivel de intención, y desapareció sin que nadie lo supiera.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">04</div>
+    <div class="diag-tag">Conversión</div>
+    <div class="diag-title">Tasa de conversión estancada</div>
+    <div class="diag-text">Tasa actual: <span class="diag-highlight">3.9%</span>. Meta interna: <span class="diag-highlight">4.5%</span>. La brecha no se cierra con más pauta — se cierra con mejor comunicación y procesos.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">05</div>
+    <div class="diag-tag">Perfil de comprador</div>
+    <div class="diag-title">Perfil desalineado con la etapa del proyecto</div>
+    <div class="diag-text">Proyectos en etapa final (<span class="diag-highlight">70%+ vendido</span>). El inventario ya no aplica para el comprador VIS/subsidio. La comunicación sigue apuntando al mismo perfil cuando el producto cambió.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">06</div>
+    <div class="diag-tag">Fuentes de tráfico</div>
+    <div class="diag-title">Dependencia de una sola fuente</div>
+    <div class="diag-text">El <span class="diag-highlight">100% de la captación digital</span> viene de formularios Facebook + búsqueda Google. No hay landing pages, VSL, lanzamientos ni eventos. Una sola fuente es un punto de falla único.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">07</div>
+    <div class="diag-tag">Contenido</div>
+    <div class="diag-title">Estrategia de contenido plana</div>
+    <div class="diag-text">Los 4 pilares actuales no educan ni precalifican. La comunicación es corporativa y lineal — no genera los niveles de conciencia necesarios para un comprador de alto ticket.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">08</div>
+    <div class="diag-tag">Email</div>
+    <div class="diag-title">Email marketing solo transaccional</div>
+    <div class="diag-text">El email se usa solo para ofertas y comunicados. No hay nurturing, ni educación progresiva, ni flujos de conversión. La base de datos existente es un activo dormido.</div>
+  </div>
+
+  <div class="diag-separator">Lo que identifiqué adicionalmente</div>
+
+  <div class="diag-item">
+    <div class="diag-num">09</div>
+    <div class="diag-tag">Estrategia de contacto</div>
+    <div class="diag-title">Sin estrategia de los 7 contactos</div>
+    <div class="diag-text">El modelo actual intenta vender desde el primer registro. Un cliente de alto ticket necesita al menos <span class="diag-highlight">7 exposiciones a la marca</span> antes de decidir. Sin niveles de conciencia, el equipo carga solo.</div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-num">10</div>
+    <div class="diag-tag">Cierre</div>
+    <div class="diag-title">Descuentos en lugar de estructura de oferta</div>
+    <div class="diag-text">Ante fricción en el cierre, el recurso actual es el descuento. Eso erosiona margen sin resolver la objeción real. Una oferta bien construida cierra más sin sacrificar precio.</div>
+  </div>
+
+  <div class="diag-item" style="grid-column: 1 / -1;">
+    <div class="diag-num">11</div>
+    <div class="diag-tag">Base de datos</div>
+    <div class="diag-title">Base de datos fría sin protocolo de reactivación</div>
+    <div class="diag-text">Existe una base de contactos acumulada que nunca ha recibido una secuencia de reactivación estructurada. Esos leads ya costaron dinero y tienen algún nivel de intención registrado. Son el activo más subutilizado de Torreón hoy.</div>
+  </div>
+</div>
+
+<!-- PROBLEMA Y OPORTUNIDAD -->
+<div class="contrast-section" id="oportunidad">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-eyebrow">El problema y la oportunidad</div>
+    <h2 class="section-title">Lo que está detrás de estos números</h2>
+    <div class="contrast-intro">
+      <p>La estrategia de formulario directo que Torreón ha usado genera resultados — y lo ha demostrado. El reto es que también genera un volumen de desgaste operativo alto: leads que no califican, tiempo de asesores invertido en prospectos que no van a comprar, y una presión constante sobre el equipo comercial que termina siendo la única variable de conversión.</p>
+      <div class="key-line">Es el síntoma natural de un equipo que trabaja muy duro con una estrategia enfocada para un momento más inicial del proyecto.</div>
+      <p>Lo que propongo no es reemplazar lo que funciona. Es construir encima de eso un sistema que diversifica las fuentes, educa al prospecto antes de que llegue al asesor, y automatiza los puntos de contacto que hoy dependen del factor humano.</p>
+    </div>
+
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th>Hoy</th>
+          <th>Con la operación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Solo formularios Facebook + Google búsqueda</td><td>Múltiples fuentes: landing pages, VSL, lanzamientos, contenido</td></tr>
+        <tr><td>Lead que llega sin contexto ni educación</td><td>Lead que llega conociendo la marca y con intención declarada</td></tr>
+        <tr><td>Primer contacto en 4 horas promedio</td><td>Automatización de primer contacto en minutos</td></tr>
+        <tr><td>Contenido corporativo sin conversión</td><td>Contenido educativo que precalifica y genera confianza</td></tr>
+        <tr><td>Email solo para descuentos y comunicados</td><td>Secuencias de nurturing que calientan y convierten</td></tr>
+        <tr><td>Base de datos dormida</td><td>Base de datos activada con protocolo de reactivación</td></tr>
+        <tr><td>Descuentos como herramienta de cierre</td><td>Estructura de oferta que cierra sin erosionar margen</td></tr>
+        <tr><td>Una sola fuente de conversión</td><td>Sistema predecible con múltiples puntos de contacto</td></tr>
+      </tbody>
+    </table>
+
+    <div class="numbers-bar">
+      <div class="numbers-cell">
+        <div class="n-val">$3.4M</div>
+        <div class="n-label">COP mensuales aproximados destinados a leads que no califican (42% de $8M COP en pauta)</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="n-val">~$10M</div>
+        <div class="n-label">COP en 90 días de inversión que no convierte — sin contar el tiempo operativo del equipo comercial</div>
+      </div>
+    </div>
+    <p style="font-size:16px; color:var(--gray-4); margin-top:16px; font-style:italic;">Esos números no son una amenaza. Son la oportunidad que ya existe dentro de Torreón, esperando ser activada con la estrategia correcta.</p>
+  </div>
+</div>
+
+<!-- METODOLOGÍA -->
+<div class="phases-wrap" id="metodo">
+  <div class="section-eyebrow">Metodología</div>
+  <h2 class="section-title">El Método Efecto Tsunami™ para Constructoras</h2>
+  <p class="section-intro">Cuatro fases secuenciales dentro de los 90 días de la operación. Cada una construye sobre la anterior.</p>
+
+  <!-- F1 -->
+  <div class="phase-block">
+    <div class="phase-sidebar">
+      <div>
+        <div class="phase-num-big">1</div>
+        <div class="phase-tag">Mes 1</div>
+        <div class="phase-name">Semana de Ignición</div>
+      </div>
+      <div class="phase-timing">Días 1 — 5 · Presencial</div>
+    </div>
+    <div class="phase-content">
+      <div class="phase-objetivo">
+        <div class="phase-objetivo-label">Objetivo</div>
+        <div class="phase-objetivo-text">Construir el Método de Comunicación Inmobiliaria de Torreón: los pilares estratégicos, la identidad de marca y la propuesta comercial que atrae al comprador correcto, genera confianza rápidamente y convierte de forma consistente. Antes de escalar tráfico, primero hay claridad.</div>
+      </div>
+      <div class="phase-deliverables-label">Lo que construimos juntos</div>
+      <ul class="phase-deliverables">
+        <li>Cuadro de Mandos Efecto Tsunami™ — pilares de comunicación, ángulos de mensaje y perfiles de comprador actualizados al inventario real de hoy</li>
+        <li>Estrategia de optimización de campañas a formulario Facebook (segmentación, copy, creatividades)</li>
+        <li>Estructura de campaña a Página de Ventas con A/B Testing + Chat IA integrado</li>
+        <li>Plan de contenido orgánico reestructurado (educativo + conversión)</li>
+        <li>Secuencia de Email Nurturing — flujo completo, guiones y automatización</li>
+        <li>Kit de Oferta Irresistible por proyecto activo — estructurado con bonos, no con descuentos</li>
+      </ul>
+      <div class="phase-note">Me desplazo a Ibagué. Sesiones de 3 a 4 horas diarias con el equipo de marketing, la gerencia de ventas y los mejores cerradores. Vuelos, hotel, viáticos y transporte en Ibagué corren por cuenta de Torreón.</div>
+    </div>
+  </div>
+
+  <!-- F2 -->
+  <div class="phase-block">
+    <div class="phase-sidebar">
+      <div>
+        <div class="phase-num-big">2</div>
+        <div class="phase-tag">Mes 1</div>
+        <div class="phase-name">Ejecución, Optimización y Calentamiento</div>
+      </div>
+      <div class="phase-timing">Días 6 — 30 · Virtual</div>
+    </div>
+    <div class="phase-content">
+      <div class="phase-objetivo">
+        <div class="phase-objetivo-label">Objetivo</div>
+        <div class="phase-objetivo-text">Poner en marcha lo construido en la Fase 1 y llevar a Torreón al primer resultado visible lo más rápido posible. Mientras el contenido educativo calienta la audiencia en redes y el email nurturing activa la base de datos, las campañas se optimizan semana a semana con datos reales.</div>
+      </div>
+      <div class="phase-deliverables-label">Lo que ocurre en este período</div>
+      <ul class="phase-deliverables">
+        <li>8 sesiones de seguimiento virtual — 2 por semana, 1 hora c/u</li>
+        <li>Revisión y feedback de calidad en cada entregable del equipo</li>
+        <li>Optimización de campañas activas + configuración API Conversiones GHL</li>
+        <li>Activación del flujo de email nurturing sobre la base de contactos existente</li>
+        <li>Contenido orgánico educativo corriendo — calentamiento de audiencia fría hacia el lanzamiento del mes 2</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- F3 -->
+  <div class="phase-block">
+    <div class="phase-sidebar">
+      <div>
+        <div class="phase-num-big">3</div>
+        <div class="phase-tag">Mes 2</div>
+        <div class="phase-name">Tsunami Express™ — Lanzamiento Semilla</div>
+      </div>
+      <div class="phase-timing">Días 31 — 60 · Virtual</div>
+    </div>
+    <div class="phase-content">
+      <div class="phase-objetivo">
+        <div class="phase-objetivo-label">Objetivo</div>
+        <div class="phase-objetivo-text">Activar el primer evento de venta coordinado — un live — que combine la base de datos calentada durante el mes anterior con tráfico frío nuevo. Para este momento el equipo ya tiene contenido educativo rodando, la audiencia ya conoce la marca, y el live se convierte en el punto de conversión natural. El objetivo es que Torreón deje de esperar que el lead llegue y empiece a generar demanda activa.</div>
+      </div>
+      <div class="phase-deliverables-label">Lo que ejecutamos juntos</div>
+      <ul class="phase-deliverables">
+        <li>Diseño y estructura completa del Lanzamiento Semilla inmobiliario</li>
+        <li>Secuencia de activación coordinada: email + WhatsApp + contenido pre-live</li>
+        <li>Guion del evento live: formato, oferta, manejo de objeciones y cierre</li>
+        <li>Segmentación de audiencia caliente (95%+ de visualización) para remarketing post-live</li>
+        <li>8 sesiones de seguimiento virtual — 2 por semana, 1 hora c/u</li>
+      </ul>
+      <div class="phase-note"><strong>Opción presencial para el live:</strong> Es posible coordinar un desplazamiento de 2 días a Ibagué para acompañar el montaje técnico y el detrás de cámaras del evento live. Vuelos, hospedaje, transporte y alimentación corren por cuenta de Torreón. Esta opción se define de mutuo acuerdo según la fecha del lanzamiento.</div>
+    </div>
+  </div>
+
+  <!-- F4 -->
+  <div class="phase-block">
+    <div class="phase-sidebar">
+      <div>
+        <div class="phase-num-big">4</div>
+        <div class="phase-tag">Mes 3</div>
+        <div class="phase-name">Tsunami Recurrente™ — Video Sales Letter</div>
+      </div>
+      <div class="phase-timing">Días 61 — 90 · Virtual</div>
+    </div>
+    <div class="phase-content">
+      <div class="phase-objetivo">
+        <div class="phase-objetivo-label">Objetivo</div>
+        <div class="phase-objetivo-text">Construir el activo de captación más poderoso del método: un VSL — Video de Venta — inmobiliario que trabaja las 24 horas, educa al prospecto, destruye objeciones y lo lleva al punto de conversión sin depender exclusivamente de llamadas masivas. Este activo queda en propiedad de Torreón y opera de forma continua mucho después de que termine la operación.</div>
+      </div>
+      <div class="phase-deliverables-label">Lo que construimos en este período</div>
+      <ul class="phase-deliverables">
+        <li>Guion completo del VSL inmobiliario — estructura probada Efecto Tsunami™</li>
+        <li>Flujo de tráfico frío hacia el VSL desde Meta Ads</li>
+        <li>Secuencia de seguimiento post-VSL (email + WhatsApp)</li>
+        <li>Integración del VSL con el embudo de conversión activo</li>
+        <li>8 sesiones de seguimiento virtual — 2 por semana, 1 hora c/u</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-wrap">
+    <div class="timeline-cell">
+      <div class="tl-code">F1</div>
+      <div class="tl-period">Días 1–5</div>
+      <div class="tl-label">Ignición</div>
+      <div class="tl-mode">Presencial · Ibagué</div>
+    </div>
+    <div class="timeline-cell">
+      <div class="tl-code">F2</div>
+      <div class="tl-period">Días 6–30</div>
+      <div class="tl-label">Ejecución</div>
+      <div class="tl-mode">Virtual · 8 sesiones</div>
+    </div>
+    <div class="timeline-cell">
+      <div class="tl-code">F3</div>
+      <div class="tl-period">Días 31–60</div>
+      <div class="tl-label">Lanzamiento</div>
+      <div class="tl-mode">Virtual · 8 sesiones</div>
+    </div>
+    <div class="timeline-cell">
+      <div class="tl-code">F4</div>
+      <div class="tl-period">Días 61–90</div>
+      <div class="tl-label">VSL</div>
+      <div class="tl-mode">Virtual · 8 sesiones</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider-line"></div>
+
+<!-- BONOS -->
+<section id="bonos" style="padding-bottom:0;">
+  <div class="section-eyebrow">Bonos incluidos</div>
+  <h2 class="section-title">Incluido en todas las opciones</h2>
+  <p class="section-intro">Estos cuatro recursos están diseñados para que el equipo de Torreón ejecute mejor desde el primer día — no al final de la operación. Valor total: <strong style="color:var(--green);">USD $1,788</strong> incluidos sin costo adicional.</p>
+</section>
+
+<style>
+  .bono-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .bono-price-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .bono-price-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--gray-4);
+    text-transform: uppercase;
+  }
+  .bonos-total {
+    background: var(--gray-1);
+    border-top: 2px solid var(--green);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .bonos-total-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray-4);
+    text-transform: uppercase;
+  }
+  .bonos-total-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--green);
+  }
+  .bonos-total-note {
+    font-size: 20px;
+    color: var(--gray-4);
+    max-width: 420px;
+    line-height: 1.6;
+  }
+  .bonos-total-note strong { color: var(--white); }
+</style>
+
+<div class="bonos-grid">
+  <div class="bono-card">
+    <div class="bono-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="20" stroke="#83E786" stroke-width="2"/><circle cx="22" cy="22" r="13" stroke="#83E786" stroke-width="2"/><circle cx="22" cy="22" r="6" fill="#83E786"/><line x1="22" y1="2" x2="22" y2="10" stroke="#83E786" stroke-width="2"/><line x1="22" y1="34" x2="22" y2="42" stroke="#83E786" stroke-width="2"/><line x1="2" y1="22" x2="10" y2="22" stroke="#83E786" stroke-width="2"/><line x1="34" y1="22" x2="42" y2="22" stroke="#83E786" stroke-width="2"/></svg></div>
+    <div class="bono-number">BONO 1</div>
+    <div class="bono-price">
+      <span class="bono-price-val">$797 USD</span>
+      <span class="bono-price-label">valor</span>
+    </div>
+    <div class="bono-title">Estructura de Guion de Ventas Inmobiliario</div>
+    <div class="bono-tagline">El flujo ganador de una presentación de alto ticket</div>
+    <div class="bono-text">La estructura completa y probada de cómo debería fluir una presentación inmobiliaria online que cierra. No es una biblioteca de guiones — es el esqueleto estratégico de una presentación de proyectos de alto ticket: cómo abrir, cómo generar confianza, cómo presentar el proyecto, cómo manejar objeciones en vivo y cómo cerrar sin depender del descuento. Adaptada al contexto de venta consultiva inmobiliaria.</div>
+  </div>
+  <div class="bono-card">
+    <div class="bono-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 6C8 6 10 4 12 4C14 4 15 5 16 7C17 9 18 11 18 12C18 13 17 14 16 15L14 17C16 21 20 26 24 28L26 26C27 25 28 24 29 24C30 24 32 25 34 26C36 27 38 29 38 31C38 33 36 35 36 35C35 36 33 38 31 38C21 38 6 23 6 13C6 11 8 6 8 6Z" stroke="#83E786" stroke-width="2" stroke-linejoin="round"/></svg></div>
+    <div class="bono-number">BONO 2</div>
+    <div class="bono-price">
+      <span class="bono-price-val">$297 USD</span>
+      <span class="bono-price-label">valor</span>
+    </div>
+    <div class="bono-title">Pitch de Llamadas de Precalificación</div>
+    <div class="bono-tagline">Para que cada minuto del equipo comercial valga</div>
+    <div class="bono-text">Un guion estructurado para que los asesores precalifiquen leads desde el primer contacto. Reduce el tiempo invertido en prospectos que no van a comprar, mejora la tasa de contactabilidad efectiva y sube la calidad de las citas que llegan a sala de ventas.</div>
+  </div>
+  <div class="bono-card">
+    <div class="bono-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 4L8 26H22L18 40L36 18H22L26 4Z" fill="rgba(131,231,134,0.15)" stroke="#83E786" stroke-width="2" stroke-linejoin="round"/></svg></div>
+    <div class="bono-number">BONO 3</div>
+    <div class="bono-price">
+      <span class="bono-price-val">$397 USD</span>
+      <span class="bono-price-label">valor</span>
+    </div>
+    <div class="bono-title">Secuencia Levanta Muertos</div>
+    <div class="bono-tagline">Para activar el dinero que ya está invertido en pauta</div>
+    <div class="bono-text">Un flujo de mensajes — WhatsApp y email — diseñado para reabrir conversaciones con leads que dejaron de responder. Con variantes por perfil de lead y por tiempo de silencio. Ejecutable desde el día 1, independiente del CRM que Torreón utilice.</div>
+  </div>
+  <div class="bono-card">
+    <div class="bono-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="6" stroke="#83E786" stroke-width="2"/><path d="M22 4V10M22 34V40M4 22H10M34 22H40M7.51 7.51L11.64 11.64M32.36 32.36L36.49 36.49M36.49 7.51L32.36 11.64M11.64 32.36L7.51 36.49" stroke="#83E786" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="22" r="14" stroke="#83E786" stroke-width="1.5" stroke-dasharray="3 3"/></svg></div>
+    <div class="bono-number">BONO 4</div>
+    <div class="bono-price">
+      <span class="bono-price-val">$297 USD</span>
+      <span class="bono-price-label">valor</span>
+    </div>
+    <div class="bono-title">Snapshot: Workflow de Notificaciones de Citas</div>
+    <div class="bono-tagline">Más asistencia a sala. Menos no-shows. Mayor tasa de cierre.</div>
+    <div class="bono-text">Un flujograma completo documentado y un snapshot listo para instalar directamente en GoHighLevel. Incluye la secuencia automatizada de confirmación de cita, recordatorio previo a la visita y seguimiento post-visita a sala de ventas. Impacta directamente la tasa de asistencia y con ella la tasa de conversión. El equipo técnico de Torreón lo instala en minutos.</div>
+    <div class="bono-brand">Diseñado por Polarix CRM</div>
+  </div>
+</div>
+<div class="bonos-total">
+  <div>
+    <div class="bonos-total-label">Valor total de bonos incluidos</div>
+    <div class="bonos-total-val">$1,788 USD</div>
+  </div>
+  <div class="bonos-total-note">Estos recursos se incluyen <strong>sin costo adicional</strong> en todas las opciones de la operación. Están disponibles desde el día 1 — no al final de los 90 días.</div>
+</div>
+
+<!-- OPCIONES -->
+<div class="opciones-section" id="inversion">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-eyebrow">Opciones de inversión</div>
+    <h2 class="section-title">Tres formas de trabajar juntos</h2>
+  </div>
+  <div style="max-width:1280px; margin:0 auto;">
+    <div id="tres-formas" class="opciones-grid">
+
+      <div class="opcion-card">
+        <div class="opcion-tag">OPCIÓN A</div>
+        <div class="opcion-letter">A</div>
+        <div class="opcion-name">Operación Completa</div>
+        <div class="opcion-price">USD $6,000</div>
+        <div class="opcion-price-note">Pago único — 90 días</div>
+        <div class="opcion-desc">La operación completa de 90 días con acompañamiento directo. Arranca con la semana de ignición presencial en Ibagué y continúa con seguimiento virtual intensivo durante el resto de la operación.</div>
+        <ul class="opcion-items">
+          <li><span class="dot"></span>Semana presencial días 1–5 en Ibagué *(vuelos, hotel y viáticos a cargo de Torreón)*</li>
+          <li><span class="dot"></span>Fases 1 a 4 del Método Efecto Tsunami™</li>
+          <li><span class="dot"></span>24 sesiones de seguimiento virtual (8 por mes)</li>
+          <li><span class="dot"></span>Los 4 bonos completos</li>
+        </ul>
+        <div class="opcion-risk">Riesgo: Bajo</div>
+      </div>
+
+      <div class="opcion-card featured">
+        <div class="opcion-featured-badge">★ La que recomiendo</div>
+        <div class="opcion-tag">OPCIÓN B</div>
+        <div class="opcion-letter">B</div>
+        <div class="opcion-name">Operación + Estratega Residente</div>
+        <div class="opcion-price">USD $6,000</div>
+        <div class="opcion-price-note">Operación junio–agosto + $500 USD/mes (sept–dic)</div>
+        <div class="opcion-desc">La operación completa de 90 días, más un acompañamiento estratégico mensual desde septiembre hasta diciembre. Los primeros 90 días construyen el sistema. Los siguientes meses lo escalan.</div>
+        <ul class="opcion-items">
+          <li><span class="dot"></span>Todo lo incluido en la Opción A</li>
+          <li><span class="dot"></span>4 sesiones mensuales de 1 hora (septiembre a diciembre)</li>
+          <li><span class="dot"></span>Supervisión de métricas y optimización continua</li>
+          <li><span class="dot"></span>Orientación en escalamiento hacia nuevos proyectos</li>
+          <li><span class="dot"></span>Evaluación de renovación en diciembre</li>
+        </ul>
+        <div class="opcion-risk">Riesgo: Bajo</div>
+      </div>
+
+      <div class="opcion-card">
+        <div class="opcion-tag">OPCIÓN C</div>
+        <div class="opcion-letter">C</div>
+        <div class="opcion-name">Operación + Modelo de Resultados</div>
+        <div class="opcion-price">USD $4,500</div>
+        <div class="opcion-price-note">+ $500/mes + 1% sobre ventas atribuibles</div>
+        <div class="opcion-desc">La inversión inicial baja a $4,500 USD. A cambio, Torreón reconoce el 1% sobre el valor total de unidades vendidas directamente atribuibles a las estrategias implementadas. Los incentivos quedan 100% alineados.</div>
+        <ul class="opcion-items">
+          <li><span class="dot"></span>Todo lo incluido en la Opción B</li>
+          <li><span class="dot"></span>Inversión inicial reducida: de $6,000 a $4,500 USD</li>
+          <li><span class="dot"></span>1% sobre valor de unidades vendidas atribuibles</li>
+          <li><span class="dot"></span>Línea base: promedio ventas últimos 3 meses</li>
+          <li><span class="dot"></span>Medición trimestral con reporte compartido</li>
+        </ul>
+        <div class="opcion-risk">Riesgo: Muy bajo</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TABLA COMPARATIVA -->
+<div class="tabla-wrap">
+  <div class="section-eyebrow">Resumen</div>
+  <h2 class="section-title" style="margin-bottom:40px;">De un vistazo</h2>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Opción A</th>
+        <th class="featured-col">Opción B</th>
+        <th>Opción C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Operación 90 días completa</td>
+        <td><span class="check">✓</span></td>
+        <td class="featured-col"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>Semana presencial Ibagué</td>
+        <td><span class="check">✓</span></td>
+        <td class="featured-col"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>24 sesiones seguimiento virtual</td>
+        <td><span class="check">✓</span></td>
+        <td class="featured-col"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>Los 4 bonos</td>
+        <td><span class="check">✓</span></td>
+        <td class="featured-col"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>Acompañamiento sept–diciembre</td>
+        <td><span class="dash">—</span></td>
+        <td class="featured-col">4 ses/mes</td>
+        <td>4 ses/mes</td>
+      </tr>
+      <tr>
+        <td>Modelo de resultados (1%)</td>
+        <td><span class="dash">—</span></td>
+        <td class="featured-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr class="price-row">
+        <td>Inversión inicial</td>
+        <td>$6,000</td>
+        <td class="featured-col">$6,000</td>
+        <td>$4,500</td>
+      </tr>
+      <tr>
+        <td>Fee mensual post-operación</td>
+        <td><span class="dash">—</span></td>
+        <td class="featured-col">$500/mes</td>
+        <td>$500/mes</td>
+      </tr>
+      <tr>
+        <td>Riesgo para Torreón</td>
+        <td>Bajo</td>
+        <td class="featured-col">Bajo</td>
+        <td>Muy bajo</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Queda 1 cupo disponible para junio.</h2>
+  <p>Esta operación opera con máximo 3 empresas por trimestre. Es un modelo que ejecuto directamente, sin intermediarios, y eso tiene un límite real. Para junio hay 2 cupos confirmados y 1 vacante disponible.</p>
+  <a href="https://polarixcrm.com/sesion-sales-control" class="cta-btn">
+    Agendar llamada de 30 minutos
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <div class="cta-note">Esta propuesta es válida por 7 días calendario a partir de su fecha de emisión.<br>Preparada exclusivamente para Torreón Grupo Empresarial — uso confidencial.</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">Polarix CRM × Efecto Tsunami™</div>
+  <div class="f-note">polarixcrm.com · efectotsunami.com · info@polarixcrm.com</div>
+</footer>
+
+</body>
+</html>
